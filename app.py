@@ -10,7 +10,7 @@ if uploaded_file is not None:
   st.success(f"Successfully uploaded: {uploaded_file.name}")
   file_details = {
     "Filename": uploaded_file.name,
-    "Filetype:: uploaded_file.type,
+    "Filetype": uploaded_file.type,
     "FileSize (bytes)": uploaded_file.size
   }
   st.write(file_details)
