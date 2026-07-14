@@ -1,5 +1,5 @@
 import streamlit as st
-from pydf import PdfReader
+from pypdf import PdfReader
 
 st.title("Smart Document AI")
 st.write("Upload a PDF document to extract structured data.")
