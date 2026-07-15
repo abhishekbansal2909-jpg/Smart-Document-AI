@@ -1,6 +1,6 @@
 import streamlit as st
 from pypdf import PdfReader
-import google.genai
+from google import genai
 
 st.title("Smart Document AI")
 st.write("Upload a PDF document to extract structured data.")
