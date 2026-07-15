@@ -1,6 +1,6 @@
 import streamlit as st
 from pypdf import PdfReader
-import google.generativeai as genai
+import google.genai
 
 st.title("Smart Document AI")
 st.write("Upload a PDF document to extract structured data.")
@@ -8,8 +8,7 @@ st.write("Upload a PDF document to extract structured data.")
 #1. Authenticate with Google safely using the hidden secret key
 
 try:
-  genai.configure(api_key = st.secrets["GEMINI_API_KEY"])
-  model = genai.GenerativeModel('gemini-2.0-flash')
+  client = genai.Client(api_key = st.secrets["GEMINI_API_KEY"])  
 except KeyError:
   st.error("API Key not found. Please ensure GEMINI_API_KEY is set in Streamlit Secrets.")
   st.stop()
@@ -54,7 +53,10 @@ if uploaded_file is not None:
       """
 
       try:
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+          model = 'gemini-2.0-flash',
+          contents=prompt
+        )
 
         st.success("Extraction Complete!")
         st.json(response.text)
