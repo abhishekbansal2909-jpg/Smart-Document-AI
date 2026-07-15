@@ -9,7 +9,7 @@ st.write("Upload a PDF document to extract structured data.")
 
 try:
   genai.configure(api_key = st.secrets["GEMINI_API_KEY"])
-  model = genai.GenerativeModel('gemini-3.1-flash')
+  model = genai.GenerativeModel('gemini-1.5-flash')
 except KeyError:
   st.error("API Key not found. Please ensure GEMINI_API_KEY is set in Streamlit Secrets.")
   st.stop()
